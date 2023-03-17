@@ -20,8 +20,8 @@ const player: readonly [string, number, boolean] = ["nico", 1, true];
 
 //type Add = (a: number, b: number) => number; //함수형 타입 지정
 type Add = {
-(a: number, b: number): number;
-(a: number, b: number, c: number): number;
+    (a: number, b: number): number;
+    (a: number, b: number, c: number): number;
 };
 
 //const add: Add = (a, b) => a + b;
@@ -31,27 +31,46 @@ type Add = {
 // return a + b;
 //}
 const add: Add = (a, b, c?: number) => {
-if (c) return a + b + c;
-return a + b;
+    if (c) return a + b + c;
+    return a + b;
 };
 
 add(1, 2);
 add(1, 2, 3);
 
 type Config = {
-path: string;
-state: object;
+    path: string;
+    state: object;
 };
 
 type Push = {
-(path: string): void;
-(config: Config): void;
+    (path: string): void;
+    (config: Config): void;
 };
 
 const push: Push = (config) => {
-if (typeof config === "string") {
-console.log(config);
-} else {
-console.log(config.path);
-}
+    if (typeof config === "string") {
+        console.log(config);
+    } else {
+        console.log(config.path);
+    }
 };
+
+//다형성(Polymorphism) : Generic
+type SuperPrint = {
+    //concrete type을 직접 작성하지 않고,
+    //TypeScript에서 해석한 타입으로 맞춰줌.
+    //concrete type : string, number, boolean, ...
+    <T>(arr: T[]) : T
+
+    // (arr: boolean[]) : void
+    // (arr: string[]) : void
+    // (arr: (number|boolean)[]) : void
+}
+
+const superPrint: SuperPrint = (arr) => arr[0]
+
+const a = superPrint([1,2,3,4])
+const b = superPrint([true, true, false])
+const c = superPrint(["a", "b", "c"])
+const d = superPrint([1,2,true,false]) //<number|boolean>

@@ -1,14 +1,14 @@
 type Age = number;
 type Name = string;
-type Player = {
-readonly name: Name;
-age?: Age;
-};
+// type Player = {
+// readonly name: Name;
+// age?: Age;
+// };
 
-const playerMaker = (name: string): Player => ({ name });
+// const playerMaker = (name: string): Player => ({ name });
 
-const nico = playerMaker("nico");
-nico.age = 30;
+// const nico = playerMaker("nico");
+// nico.age = 30;
 
 const numbers: readonly number[] = [1, 2, 3, 4];
 //numbers.push(10)
@@ -70,7 +70,42 @@ type SuperPrint = {
 
 const superPrint: SuperPrint = (arr) => arr[0]
 
+// function superPrint<V>(a: V[]){
+//     return a[0]
+// }
+
 const a = superPrint([1,2,3,4])
 const b = superPrint([true, true, false])
 const c = superPrint(["a", "b", "c"])
 const d = superPrint([1,2,true,false]) //<number|boolean>
+
+type Player<E> = {
+    name:string
+    extraInfo: E
+}
+type NicoExtra = {
+    favFood: string
+}
+type NicoPlayer = Player<NicoExtra>
+
+const nico: NicoPlayer = {
+    name: "nico",
+    extraInfo: {
+        favFood: "kimchi"
+    }
+}
+
+const lynn: Player<null> = {
+    name : "lynn",
+    extraInfo : null
+}
+
+type A = Array<number>
+
+let aaa:A = [1,2,3,4]
+
+// function printAllNumbers(arr:number[])
+function printAllNumbers(arr:Array<number>){
+
+}
+

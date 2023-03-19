@@ -1,0 +1,25 @@
+{
+  "name": "learntype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjinwo0/learnType.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjinwo0/learnType/issues"
+  },
+  "homepage": "https://github.com/jjinwo0/learnType#readme",
+  "dependencies": {
+    "typescript": "^5.0.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}

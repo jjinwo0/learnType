@@ -79,14 +79,14 @@ const b = superPrint([true, true, false])
 const c = superPrint(["a", "b", "c"])
 const d = superPrint([1,2,true,false]) //<number|boolean>
 
-type Player<E> = {
+type PlayerT<E> = {
     name:string
     extraInfo: E
 }
 type NicoExtra = {
     favFood: string
 }
-type NicoPlayer = Player<NicoExtra>
+type NicoPlayer = PlayerT<NicoExtra>
 
 const nico: NicoPlayer = {
     name: "nico",
@@ -95,7 +95,7 @@ const nico: NicoPlayer = {
     }
 }
 
-const lynn: Player<null> = {
+const lynn: PlayerT<null> = {
     name : "lynn",
     extraInfo : null
 }

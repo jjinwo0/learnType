@@ -70,14 +70,62 @@ const nico2 : Player2 = {
     healthBar:10
 }
 
+//인터페이스는 오버로딩이 가능
 interface UserInterface {
     name:string
 }
-
-interface PlayerImpl extends User{
-
+interface UserInterface {
+    lastName:string
+}
+interface UserInterface {
+    health:number
 }
 
-const nicoImpl : PlayerImpl = {
-    name:"nico"
+interface PlayerEx extends UserInterface{
+}
+
+// const nicoImpl : PlayerEx = {
+//     name:"nico",
+//     lastName:"potato",
+//     health:10
+// }
+
+// abstract class UserAbs{
+//     constructor(
+//         protected firstName:string,
+//         protected lastName:string
+//     ){}
+//     abstract sayHi(name:string):string
+//     abstract fullName():string
+// }
+
+// class PlayerEx extends UserAbs{
+//     sayHi(name: string): string {
+//         return `Hello ${name}. My name is ${this.fullName()}`
+//     }
+//     fullName(): string {
+//         return `${this.firstName} ${this.lastName}`
+//     }
+// }
+//추상클래스 -> JS 변환 시, 일반 클래스로 변환
+//인터페이스 -> JS 변환 시, 반영되지 않고 사라짐.
+
+interface UserInt{
+    firstName:string,
+    lastName:string
+    sayHi(name:string):string
+    fullName():string
+}
+
+class PlayerEx implements UserInt{
+    constructor(
+        public firstName:string,
+        public lastName:string
+    ){}
+    fullName(): string {
+        return `${this.firstName} ${this.lastName}`
+    }
+    sayHi(name: string): string {
+        return `Hello ${name}. My name is ${this.fullName()}`
+    }
 }

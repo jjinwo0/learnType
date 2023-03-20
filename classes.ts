@@ -42,8 +42,8 @@ class Dict{
 
 class Word{
     constructor(
-        public term: string,
-        public def: string
+        public readonly term: string,
+        public readonly def: string
     ){}
 }
 
@@ -53,3 +53,31 @@ const dict = new Dict();
 
 dict.add(kimchi);
 dict.def("kimchi")
+
+//특정 값만을 사용하도록 정할 수 있음.
+type Team = "read" | "blue" | "yellow"
+type Health = 1 | 5 | 10
+
+interface Player2 {
+    nickname:string,
+    team:Team,
+    healthBar:Health
+}
+
+const nico2 : Player2 = {
+    nickname:"read",
+    team:"blue",
+    healthBar:10
+}
+
+interface UserInterface {
+    name:string
+}
+
+interface PlayerImpl extends User{
+
+}
+
+const nicoImpl : PlayerImpl = {
+    name:"nico"
+}
